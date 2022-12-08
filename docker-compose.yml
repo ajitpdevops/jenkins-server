@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+  jenkins-master:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TZ=America/Chicago
+    container_name: jenkins-master
+    mem_limit: 1G
+    mem_reservation: 1G
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    ports:
+      - "9980:8080"
+      - "50000:50000"
+
